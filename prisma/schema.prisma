@@ -1,0 +1,232 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/////////////////////////
+// Modelo principal: Carro
+/////////////////////////
+model Carro {
+  id           String  @id @default(uuid())
+  slug         String  @unique
+  nome         String
+  ano          Int?
+  preco        Float?
+  combustivel  String?
+  ipva         Float?
+  seguro       Float?
+  revisoes     String?
+  procedencia  String?
+  garantia     String?
+  configuracao String?
+  porte        String?
+  lugares      Int?
+  portas       Int?
+  geracao      String?
+  plataforma   String?
+  notaLeitor   Float?
+
+  // FKs para entidades técnicas (cada carro seleciona 1 item de cada categoria)
+  motorId String?
+  motor   Motor?  @relation(fields: [motorId], references: [id])
+
+  transmissaoId String?
+  transmissao   Transmissao? @relation(fields: [transmissaoId], references: [id])
+
+  suspensaoId String?
+  suspensao   Suspensao? @relation(fields: [suspensaoId], references: [id])
+
+  freiosId String?
+  freios   Freios? @relation(fields: [freiosId], references: [id])
+
+  direcaoId String?
+  direcao   Direcao? @relation(fields: [direcaoId], references: [id])
+
+  pneusId String?
+  pneus   Pneus?  @relation(fields: [pneusId], references: [id])
+
+  dimensoesId String?
+  dimensoes   Dimensoes? @relation(fields: [dimensoesId], references: [id])
+
+  aerodinamicaId String?
+  aerodinamica   Aerodinamica? @relation(fields: [aerodinamicaId], references: [id])
+
+  desempenhoId String?
+  desempenho   Desempenho? @relation(fields: [desempenhoId], references: [id])
+
+  consumoId String?
+  consumo   Consumo? @relation(fields: [consumoId], references: [id])
+
+  autonomiaId String?
+  autonomia   Autonomia? @relation(fields: [autonomiaId], references: [id])
+
+  // itens de equipamento / listas (armazenados como texto concatenado — segue seu script)
+  seguranca     String?
+  conforto      String?
+  infotenimento String?
+
+  // Rankings (1 carro pode ter várias pontuações em diferentes RankingSystem)
+  carRankings CarRanking[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+/////////////////////////
+// Entidades técnicas (1 motor pode ser usado por vários carros)
+/////////////////////////
+model Motor {
+  id                  String  @id @default(uuid())
+  instalacao          String?
+  aspiracao           String?
+  disposicao          String?
+  alimentacao         String?
+  cilindros           String?
+  comandoValvulas     String?
+  tuchos              String?
+  variacaoComando     String?
+  valvulasPorCilindro String?
+  diametroCilindros   String?
+  razaoCompressao     String?
+  cursoPistoes        String?
+  cilindrada          String?
+  potenciaMaxima      String?
+  codigoMotor         String?
+  torqueMaximo        String?
+  pesoPotencia        String?
+  torqueEspecifico    String?
+  pesoTorque          String?
+  potenciaEspecifica  String?
+  rotacaoMaxima       String?
+
+  // Relação inversa -> vários carros podem referenciar este motor
+  carros Carro[]
+}
+
+model Transmissao {
+  id           String  @id @default(uuid())
+  tracao       String?
+  cambio       String?
+  codigoCambio String?
+  acoplamento  String?
+
+  carros Carro[]
+}
+
+model Suspensao {
+  id                String  @id @default(uuid())
+  dianteira         String?
+  traseira          String?
+  elementoElasticod String?
+  elementoElasticot String?
+
+  carros Carro[]
+}
+
+model Freios {
+  id         String  @id @default(uuid())
+  dianteiros String?
+  traseiros  String?
+
+  carros Carro[]
+}
+
+model Direcao {
+  id                 String  @id @default(uuid())
+  assistencia        String?
+  diametroMinimoGiro String?
+
+  carros Carro[]
+}
+
+model Pneus {
+  id            String  @id @default(uuid())
+  dianteiros    String?
+  traseiros     String?
+  alturaFlancoD String?
+  estepe        String?
+
+  carros Carro[]
+}
+
+model Dimensoes {
+  id                  String  @id @default(uuid())
+  comprimento         String?
+  largura             String?
+  distanciaEntreEixos String?
+  altura              String?
+  bitolaDianteira     String?
+  bitolaTraseira      String?
+  portaMalas          String?
+  tanqueCombustivel   String?
+  peso                String?
+  cargaUtil           String?
+  vaoLivreSolo        String?
+
+  carros Carro[]
+}
+
+model Aerodinamica {
+  id                   String  @id @default(uuid())
+  areaFrontal          String?
+  coeficienteArrasto   String?
+  areaFrontalCorrigida String?
+
+  carros Carro[]
+}
+
+model Desempenho {
+  id               String  @id @default(uuid())
+  velocidadeMaxima String?
+  aceleracao0100   String?
+
+  carros Carro[]
+}
+
+model Consumo {
+  id         String  @id @default(uuid())
+  urbano     String?
+  rodoviario String?
+
+  carros Carro[]
+}
+
+model Autonomia {
+  id         String  @id @default(uuid())
+  urbana     String?
+  rodoviaria String?
+
+  carros Carro[]
+}
+
+/////////////////////////
+// Sistema de Ranking
+/////////////////////////
+model RankingSystem {
+  id          String       @id @default(uuid())
+  nome        String // ex: "Família", "Luxo", "Econômico", "Urbano", "Trabalho/Profissional"
+  descricao   String?
+  carRankings CarRanking[]
+}
+
+model CarRanking {
+  id              String        @id @default(uuid())
+  ratingSystem    Float? // Pontos alcançados (0..10 etc)
+  comentario      String? // opcional: comentário/observação nessa avaliação
+  car             Carro         @relation(fields: [carId], references: [id])
+  carId           String
+  rankingSystem   RankingSystem @relation(fields: [rankingSystemId], references: [id])
+  rankingSystemId String
+
+  @@unique([carId, rankingSystemId])
+}
