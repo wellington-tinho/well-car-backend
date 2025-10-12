@@ -43,3 +43,13 @@ export const carSchema = z.object({
 });
 
 export type CarType = z.infer<typeof carSchema>;
+
+// Schema para atualização (todos opcionais, exceto id obrigatório)
+export const carSchemaUpdate = carSchema
+	.partial()
+	.extend({
+		id: z.uuid(), // força id a ser obrigatório
+	})
+	.omit({ createdAt: true, updatedAt: true });
+
+export type CarTypeUpdate = z.infer<typeof carSchemaUpdate>;

@@ -1,7 +1,7 @@
 import { fastifyCors } from "@fastify/cors";
 import fastifySwagger from "@fastify/swagger";
+import fastifySwaggerUi from "@fastify/swagger-ui";
 import { fastify } from "fastify";
-
 import {
 	jsonSchemaTransform,
 	serializerCompiler,
@@ -24,6 +24,10 @@ app.register(fastifySwagger, {
 		},
 	},
 	transform: jsonSchemaTransform,
+});
+
+app.register(fastifySwaggerUi, {
+	routePrefix: "/docs",
 });
 
 app.register(routes);

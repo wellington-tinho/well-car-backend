@@ -1,5 +1,10 @@
 import prisma from "../lib/prisma.ts";
-import { type CarType, carSchema } from "../schemas/car-data.scheme.ts";
+import {
+	type CarType,
+	type CarTypeUpdate,
+	carSchema,
+	carSchemaUpdate,
+} from "../schemas/car-data.scheme.ts";
 
 export const carService = {
 	// CREATE
@@ -33,8 +38,8 @@ export const carService = {
 	},
 
 	// UPDATE
-	async updateCar(id: string, data: CarType) {
-		const parsedData = carSchema.partial().parse(data);
+	async updateCar(id: string, data: CarTypeUpdate) {
+		const parsedData = carSchemaUpdate.partial().parse(data);
 		return prisma.carro.update({
 			where: { id },
 			data: parsedData,
