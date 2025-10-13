@@ -15,7 +15,5 @@ services:
 
   - type: pserv
     name: database
+    runtime: docker
     plan: free
-    databaseName: well_car_db
-    user: well_car_user
-    postgresMajorVersion: 16
