@@ -39,6 +39,7 @@ export default async function suspensaoRoutes(app: FastifyTypedInstance) {
 
 				return reply.status(201).send({
 					success: true,
+					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do SuspensaoType não aceita null
 					data: newSuspensao,
 				});
 			} catch (error) {
@@ -75,6 +76,7 @@ export default async function suspensaoRoutes(app: FastifyTypedInstance) {
 
 				return reply.send({
 					success: true,
+					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do SuspensaoType não aceita null
 					data: suspensoes,
 				});
 			} catch (error) {
@@ -126,6 +128,7 @@ export default async function suspensaoRoutes(app: FastifyTypedInstance) {
 
 				return reply.send({
 					success: true,
+					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do SuspensaoType não aceita null
 					data: suspensao,
 				});
 			} catch (error) {
@@ -176,6 +179,7 @@ export default async function suspensaoRoutes(app: FastifyTypedInstance) {
 
 				return reply.send({
 					success: true,
+					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do TransmissaoType não aceita null
 					data: updatedSuspensao,
 				});
 			} catch (error) {

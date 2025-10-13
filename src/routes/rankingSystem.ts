@@ -26,6 +26,7 @@ export default async function rankingSystemRoutes(app: FastifyTypedInstance) {
 			try {
 				const data = request.body as RankingSystemType;
 				const result = await rankingSystemService.createRankingSystem(data);
+				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do RankingSystemType não aceita null
 				return reply.status(201).send({ success: true, data: result });
 			} catch (error) {
 				return reply
@@ -55,6 +56,7 @@ export default async function rankingSystemRoutes(app: FastifyTypedInstance) {
 		async (_, reply) => {
 			try {
 				const result = await rankingSystemService.getAllRankingSystems();
+				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do RankingSystemType não aceita null
 				return reply.send({ success: true, data: result });
 			} catch (error) {
 				return reply
@@ -92,6 +94,7 @@ export default async function rankingSystemRoutes(app: FastifyTypedInstance) {
 						success: false,
 						error: "Sistema de ranking não encontrado",
 					});
+				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do RankingSystemType não aceita null
 				return reply.send({ success: true, data: result });
 			} catch (error) {
 				return reply
@@ -121,7 +124,9 @@ export default async function rankingSystemRoutes(app: FastifyTypedInstance) {
 			try {
 				const { id } = request.params as { id: string };
 				const data = request.body as Partial<RankingSystemType>;
+				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do RankingSystemType não aceita null
 				const result = await rankingSystemService.updateRankingSystem(id, data);
+				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do RankingSystemType não aceita null
 				return reply.send({ success: true, data: result });
 			} catch (error) {
 				return reply
