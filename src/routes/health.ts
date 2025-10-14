@@ -22,10 +22,6 @@ export default async function healthRoutes(app: FastifyTypedInstance) {
 				const connectionsUsed =
 					await sql`SELECT count(*) FROM pg_stat_activity;`;
 
-				console.log(version);
-				console.log(maxConnections);
-				console.log(connectionsUsed);
-
 				return reply.send({
 					updated_at: new Date().toISOString(),
 					dependencies: {

@@ -4,6 +4,9 @@
 	"description": "",
 	"main": "src/server.ts",
 	"type": "module",
+	"engines": {
+		"node": "24"
+	},
 	"scripts": {
 		"dev": "node --env-file .env --experimental-strip-types src/server.ts",
 		"build": "tsup src/server.ts --format esm --dts --sourcemap --clean",

@@ -4,5 +4,8 @@ services:
     image: "bitnami/postgresql:latest"
     ports:
       - '5432:5432'
-    env_file:
-      - ../.env
+    environment:
+      POSTGRES_HOST: localhost
+      POSTGRES_USER: local_user
+      POSTGRES_DB: local_db
+      POSTGRES_PASSWORD: local_password
