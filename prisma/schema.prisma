@@ -155,6 +155,7 @@ model Pneus {
   traseiros     String?
   alturaFlancoD String?
   estepe        String?
+  tipo          String?
 
   carros Carro[]
 }

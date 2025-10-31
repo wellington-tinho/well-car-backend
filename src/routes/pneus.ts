@@ -37,8 +37,7 @@ export default async function pneusRoutes(app: FastifyTypedInstance) {
 
 				return reply.status(201).send({
 					success: true,
-					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do MotorType não aceita null
-					data: newPneus,
+					data: newPneus as PneusType,
 				});
 			} catch (error) {
 				return reply.status(500).send({
@@ -74,8 +73,7 @@ export default async function pneusRoutes(app: FastifyTypedInstance) {
 
 				return reply.send({
 					success: true,
-					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do MotorType não aceita null
-					data: pneus,
+					data: pneus as PneusType[],
 				});
 			} catch (error) {
 				return reply.status(500).send({
@@ -126,8 +124,7 @@ export default async function pneusRoutes(app: FastifyTypedInstance) {
 
 				return reply.send({
 					success: true,
-					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do MotorType não aceita null
-					data: pneus,
+					data: pneus as PneusType,
 				});
 			} catch (error) {
 				return reply.status(500).send({
@@ -174,8 +171,7 @@ export default async function pneusRoutes(app: FastifyTypedInstance) {
 
 				return reply.send({
 					success: true,
-					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do MotorType não aceita null
-					data: updatedPneus,
+					data: updatedPneus as PneusType,
 				});
 			} catch (error) {
 				return reply.status(500).send({

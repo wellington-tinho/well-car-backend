@@ -21,7 +21,7 @@ export const pneusService = {
 	},
 
 	async updatePneus(id: string, data: PneusType) {
-		const parsedData = pneusSchema.partial().parse(data);
+		const parsedData = pneusSchema.parse(data);
 		return prisma.pneus.update({
 			where: { id },
 			data: parsedData,
