@@ -10,7 +10,7 @@
 	"scripts": {
 		"dev": "node --env-file .env --experimental-strip-types src/server.ts",
 		"build": "tsup src/server.ts --format cjs --sourcemap --clean",
-		"start": "node dist/server.cjs",
+		"start": "node --env-file .env dist/server.cjs",
 		"services:up": "docker-compose -f infra/docker-compose.yaml up -d",
 		"services:stop": "docker-compose -f infra/docker-compose.yaml stop",
 		"services:down": "docker-compose -f infra/docker-compose.yaml down",
