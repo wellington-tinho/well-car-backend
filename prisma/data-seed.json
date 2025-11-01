@@ -1,0 +1,374 @@
+[
+  {
+    "slug": "1-0-turbo-200-flex-you-cvt",
+    "nome": "CITROËN C3 1.0 TURBO 200 FLEX YOU CVT",
+    "ano": 2026,
+    "preco": 106990,
+    "combustivel": "Gasolina e álcool",
+    "ipva": null,
+    "seguro": null,
+    "revisoes": null,
+    "procedencia": "Brasil",
+    "garantia": "36",
+    "configuracao": "2-3",
+    "porte": "Compacto",
+    "lugares": 5,
+    "portas": 4,
+    "geracao": null,
+    "plataforma": null,
+    "notaLeitor": 0,
+    "seguranca": "Freios ABS - com EBD (Distribuição Eletrônica de Frenagem), Freios ABS - com BAS (Sistema Auxiliar de Frenagem), Controle de estabilidade - ESP, Controle de tração - TCS, Assistente de arranque em subidas - HLA, Controle automático de pressão dos pneus, ISOFIX, Quantidade de airbags, Airbags do motorista - frontal, Airbags do motorista - lateral, Airbags do passageiro - frontal, Airbags do passageiro - lateral, Cintos de segurança dianteiro - com 3 pontos, Cintos de segurança dianteiro - com ajuste de altura, Cintos de segurança traseiro - com 3 pontos, Cintos de segurança traseiro - com pré-tensionadores",
+    "conforto": "Ventilação - Tipo, Ar condicionado - tipo/função, Ar condicionado - N° de zonas, Computador de bordo - Consumo médio, Computador de bordo - Consumo instantâneo, Computador de bordo - Velocidade média, Computador de bordo - Combustível restante / km, Computador de bordo - Seleção modo de condução, Volante multifunções, Chave de ignição - Canivete, Trava/Abertura elétrica das portas - botão central, Trava/Abertura elétrica das portas - Sistema de travamento automático das portas por velocidade, Trava/Abertura elétrica das portas - com controle remoto, Vidros dianteiros com acionamento elétrico, Vidros traseiros com acionamento elétrico, Espelhos retrovisores externos - Ajuste, Espelhos retrovisores externos - Cor, Espelhos retrovisores externos - com repetidor de seta, Alarme - com acionamento a distância, Tampa de combustível - com abertura/fechamento manual interna, Tampa do porta-malas - com abertura interna elétrica, Velocímetro, Conta-giros, Hodômetro - Parcial, N° tomada de energia 12V, Assistente de estacionamento - sensor de alerta, Assistente de estacionamento - câmera, Espelho retrovisor interno - com ajuste manual, Luz de leitura, Para-sol - com espelho para o passageiro",
+    "infotenimento": "Sistema de áudio - Tipo, Sistema de áudio - Nomenclatura (comercial), Bluetooth, Tela de entretenimento - Tamanho da tela (pol.), Tela de entretenimento - Sensível ao toque, Tela de entretenimento - Espelhamento com smartphone, Tela de entretenimento - Navegação (GPS), Controle de áudio, Alto-falantes - Quantidade",
+    "motor": {
+      "create": {
+        "instalacao": "Linha",
+        "aspiracao": "Turbo",
+        "disposicao": "Linha",
+        "alimentacao": "Turbo",
+        "cilindros": "3",
+        "comandoValvulas": "DOHC",
+        "tuchos": null,
+        "variacaoComando": "Não",
+        "valvulasPorCilindro": "4",
+        "diametroCilindros": null,
+        "razaoCompressao": "10,5:1",
+        "cursoPistoes": null,
+        "cilindrada": "999",
+        "potenciaMaxima": "130/5750",
+        "codigoMotor": null,
+        "torqueMaximo": "20,4/1750",
+        "pesoPotencia": null,
+        "torqueEspecifico": null,
+        "pesoTorque": null,
+        "potenciaEspecifica": null,
+        "rotacaoMaxima": null
+      }
+    },
+    "transmissao": {
+      "create": {
+        "tracao": "Dianteira",
+        "cambio": "CVT",
+        "codigoCambio": null,
+        "acoplamento": null
+      }
+    },
+    "suspensao": {
+      "create": {
+        "dianteira": "McPherson",
+        "traseira": "Eixo de torção",
+        "elementoElasticod": "Helicoidal",
+        "elementoElasticot": "Helicoidal"
+      }
+    },
+    "freios": {
+      "create": {
+        "dianteiros": "Disco ventilado",
+        "traseiros": "Tambor"
+      }
+    },
+    "direcao": {
+      "create": {
+        "assistencia": "Elétrica",
+        "diametroMinimoGiro": "10600"
+      }
+    },
+    "pneus": {
+      "create": {
+        "dianteiros": "195/65",
+        "traseiros": "195/65",
+        "alturaFlancoD": null,
+        "estepe": "Convencional",
+        "tipo": "Liga leve"
+      }
+    },
+    "dimensoes": {
+      "create": {
+        "comprimento": "3981",
+        "largura": "1734",
+        "distanciaEntreEixos": "2540",
+        "altura": "1605",
+        "bitolaDianteira": null,
+        "bitolaTraseira": null,
+        "portaMalas": "315",
+        "tanqueCombustivel": "47",
+        "peso": "1122",
+        "cargaUtil": "400",
+        "vaoLivreSolo": "180"
+      }
+    },
+    "aerodinamica": {
+      "create": {
+        "areaFrontal": null,
+        "coeficienteArrasto": null,
+        "areaFrontalCorrigida": null
+      }
+    },
+    "desempenho": {
+      "create": {
+        "velocidadeMaxima": "194",
+        "aceleracao0100": "8,2"
+      }
+    },
+    "consumo": {
+      "create": {
+        "urbano": "7,9",
+        "rodoviario": "8,8"
+      }
+    },
+    "autonomia": {
+      "create": {
+        "urbana": null,
+        "rodoviaria": null
+      }
+    }
+  },
+  {
+    "slug": "1-3-firefly-flex-precision-cvt",
+    "nome": "FIAT CRONOS 1.3 FIREFLY FLEX PRECISION CVT",
+    "ano": 2026,
+    "preco": 119990,
+    "combustivel": "Gasolina e álcool",
+    "ipva": null,
+    "seguro": null,
+    "revisoes": null,
+    "procedencia": "Brasil",
+    "garantia": "36",
+    "configuracao": "2-3",
+    "porte": "Compacto",
+    "lugares": 5,
+    "portas": 4,
+    "geracao": null,
+    "plataforma": null,
+    "notaLeitor": 0,
+    "seguranca": "Freios ABS - com EBD (Distribuição Eletrônica de Frenagem), Controle de estabilidade - ESP, Controle de tração - TCS, Assistente de arranque em subidas - HLA, Limitador de velocidade, Controle automático de pressão dos pneus, ISOFIX, Quantidade de airbags, Airbags do motorista - frontal, Airbags do motorista - lateral, Airbags do passageiro - frontal, Airbags do passageiro - lateral, Cintos de segurança dianteiro - com 3 pontos, Cintos de segurança dianteiro - com ajuste de altura, Cintos de segurança traseiro - com 3 pontos, Cintos de segurança traseiro - central abdominal",
+    "conforto": "Ventilação - Tipo, Ar condicionado - tipo/função, Ar condicionado - N° de zonas, Ar condicionado - com display digital, Ar condicionado - com filtro anti-pólen, Computador de bordo - Consumo médio, Computador de bordo - Consumo instantâneo, Computador de bordo - Velocidade média, Computador de bordo - Combustível restante / km, Computador de bordo - Seleção modo de condução, Volante multifunções, Piloto automático, Chave de ignição - Smart key, Botão de ignição/start button, Trava/Abertura elétrica das portas - botão central, Trava/Abertura elétrica das portas - Sistema de travamento automático das portas por velocidade, Trava/Abertura elétrica das portas - com controle remoto, Vidros dianteiros com acionamento elétrico, Vidros traseiros com acionamento elétrico, Espelhos retrovisores externos - Ajuste, Espelhos retrovisores externos - com rebatimento elétrico, Espelhos retrovisores externos - Cor, Espelhos retrovisores externos - com repetidor de seta, Alarme - com acionamento a distância, Tampa do porta-malas - com abertura manual interna, Velocímetro, Conta-giros, Hodômetro - Parcial, N° tomada de energia 12V, Assistente de estacionamento - sensor de alerta, Assistente de estacionamento - câmera, Espelho retrovisor interno - com ajuste manual, Luz de leitura, Para-sol - com espelho para o motorista, Para-sol - com espelho para o passageiro",
+    "infotenimento": "Sistema de áudio - Tipo, Sistema de áudio - Nomenclatura (comercial), Bluetooth, Tela de entretenimento - Tamanho da tela (pol.), Tela de entretenimento - Sensível ao toque, Tela de entretenimento - Espelhamento com smartphone, Tela de entretenimento - Navegação (GPS), Tipo de espelhamento, Carregador 12V, Controle de áudio, Alto-falantes - Quantidade, Alto-falantes - Tweeters",
+    "motor": {
+      "create": {
+        "instalacao": "Linha",
+        "aspiracao": "Aspirado",
+        "disposicao": "Linha",
+        "alimentacao": "Aspirado",
+        "cilindros": "4",
+        "comandoValvulas": "SOHC",
+        "tuchos": null,
+        "variacaoComando": "Não",
+        "valvulasPorCilindro": "2",
+        "diametroCilindros": null,
+        "razaoCompressao": "13,2:1",
+        "cursoPistoes": null,
+        "cilindrada": "1332",
+        "potenciaMaxima": "107/6250",
+        "codigoMotor": "Firefly",
+        "torqueMaximo": "13,7/4000",
+        "pesoPotencia": null,
+        "torqueEspecifico": null,
+        "pesoTorque": null,
+        "potenciaEspecifica": null,
+        "rotacaoMaxima": null
+      }
+    },
+    "transmissao": {
+      "create": {
+        "tracao": "Dianteira",
+        "cambio": "CVT",
+        "codigoCambio": null,
+        "acoplamento": null
+      }
+    },
+    "suspensao": {
+      "create": {
+        "dianteira": "McPherson",
+        "traseira": "Eixo de torção",
+        "elementoElasticod": "Helicoidal",
+        "elementoElasticot": "Helicoidal"
+      }
+    },
+    "freios": {
+      "create": {
+        "dianteiros": "Disco ventilado",
+        "traseiros": "Tambor"
+      }
+    },
+    "direcao": {
+      "create": {
+        "assistencia": "Elétrica",
+        "diametroMinimoGiro": null
+      }
+    },
+    "pneus": {
+      "create": {
+        "dianteiros": "195/55",
+        "traseiros": "195/55",
+        "alturaFlancoD": null,
+        "estepe": "Convencional",
+        "tipo": "Liga leve"
+      }
+    },
+    "dimensoes": {
+      "create": {
+        "comprimento": "4364",
+        "largura": "1726",
+        "distanciaEntreEixos": null,
+        "altura": "1508",
+        "bitolaDianteira": null,
+        "bitolaTraseira": null,
+        "portaMalas": "525",
+        "tanqueCombustivel": "48",
+        "peso": "1140",
+        "cargaUtil": null,
+        "vaoLivreSolo": null
+      }
+    },
+    "aerodinamica": {
+      "create": {
+        "areaFrontal": null,
+        "coeficienteArrasto": null,
+        "areaFrontalCorrigida": null
+      }
+    },
+    "desempenho": {
+      "create": {
+        "velocidadeMaxima": null,
+        "aceleracao0100": null
+      }
+    },
+    "consumo": {
+      "create": {
+        "urbano": "9,1",
+        "rodoviario": "10,1"
+      }
+    },
+    "autonomia": {
+      "create": {
+        "urbana": null,
+        "rodoviaria": null
+      }
+    }
+  },
+  {
+    "slug": "1-5-i-vtec-flex-exl-cvt",
+    "nome": "HONDA WR-V 1.5 I-VTEC FLEX EXL CVT",
+    "ano": 2026,
+    "preco": 149900,
+    "combustivel": "Gasolina e álcool",
+    "ipva": null,
+    "seguro": null,
+    "revisoes": null,
+    "procedencia": "Brasil",
+    "garantia": "72",
+    "configuracao": "2-3",
+    "porte": "Compacto",
+    "lugares": 5,
+    "portas": 4,
+    "geracao": null,
+    "plataforma": null,
+    "notaLeitor": 0,
+    "seguranca": "Freios ABS - com EBD (Distribuição Eletrônica de Frenagem), Controle de estabilidade - ESP, Controle de tração - TCS, Frenagem autônoma emergencial - AEB, Assistente de arranque em subidas - HLA, Alerta de permanência em faixa, Assistente de permanência em faixa, Alerta de colisão, Sensor de ponto cego/ ultrapassagem, Controle automático de pressão dos pneus, ISOFIX, Quantidade de airbags, Airbags do motorista - frontal, Airbags do motorista - lateral, Airbags do motorista - de cortina, Airbags do passageiro - frontal, Airbags do passageiro - lateral, Airbags do passageiro - de cortina, Cintos de segurança dianteiro - com 3 pontos, Cintos de segurança dianteiro - com ajuste de altura, Cintos de segurança dianteiro - com pré-tensionadores, Cintos de segurança traseiro - com 3 pontos",
+    "conforto": "Ar condicionado - tipo/função, Ar condicionado - N° de zonas, Ar condicionado - com display digital, Computador de bordo - Consumo médio, Computador de bordo - Consumo instantâneo, Computador de bordo - Velocidade média, Computador de bordo - Combustível restante / km, Volante multifunções, Piloto automático, Chave de ignição - Smart key, Botão de ignição/start button, Funções por Smartphone, Trava/Abertura elétrica das portas - botão central, Trava/Abertura elétrica das portas - Sistema de travamento automático das portas por velocidade, Trava/Abertura elétrica das portas - com controle remoto, Vidros dianteiros com acionamento elétrico, Vidros traseiros com acionamento elétrico, Espelhos retrovisores externos - Ajuste, Espelhos retrovisores externos - com rebatimento elétrico, Espelhos retrovisores externos - Cor, Espelhos retrovisores externos - com repetidor de seta, Alarme - com acionamento a distância, Tampa de combustível - com abertura/fechamento manual interna, Tampa do porta-malas - com abertura interna elétrica, Tampa do porta-malas - com controle remoto, Velocímetro, Conta-giros, N° tomada de energia 12V, Assistente de estacionamento - sensor de alerta, Assistente de estacionamento - câmera, Espelho retrovisor interno - com ajuste manual, Espelho retrovisor interno - fotocrômico, Luz de leitura, Para-sol - com espelho para o motorista, Para-sol - com espelho para o passageiro",
+    "infotenimento": "Sistema de áudio - Tipo, Bluetooth, Carregador de smartphone por indução, Tela de entretenimento - Tamanho da tela (pol.), Tela de entretenimento - Sensível ao toque, Tela de entretenimento - Espelhamento com smartphone, Tela de entretenimento - Navegação (GPS), Tipo de espelhamento, Carregador 12V, Controle de áudio, Alto-falantes - Quantidade, Alto-falantes - Tweeters",
+    "motor": {
+      "create": {
+        "instalacao": "Linha",
+        "aspiracao": "Aspirado",
+        "disposicao": "Linha",
+        "alimentacao": "Aspirado",
+        "cilindros": "4",
+        "comandoValvulas": "DOHC",
+        "tuchos": null,
+        "variacaoComando": null,
+        "valvulasPorCilindro": "4",
+        "diametroCilindros": null,
+        "razaoCompressao": null,
+        "cursoPistoes": null,
+        "cilindrada": "1497",
+        "potenciaMaxima": "126/6200",
+        "codigoMotor": "i-VTEC",
+        "torqueMaximo": "15,8/4600",
+        "pesoPotencia": null,
+        "torqueEspecifico": null,
+        "pesoTorque": null,
+        "potenciaEspecifica": null,
+        "rotacaoMaxima": null
+      }
+    },
+    "transmissao": {
+      "create": {
+        "tracao": "Dianteira",
+        "cambio": "CVT",
+        "codigoCambio": null,
+        "acoplamento": null
+      }
+    },
+    "suspensao": {
+      "create": {
+        "dianteira": "McPherson",
+        "traseira": "Eixo de torção",
+        "elementoElasticod": "Helicoidal",
+        "elementoElasticot": "Helicoidal"
+      }
+    },
+    "freios": {
+      "create": {
+        "dianteiros": "Disco ventilado",
+        "traseiros": "Disco sólido"
+      }
+    },
+    "direcao": {
+      "create": {
+        "assistencia": "Elétrica",
+        "diametroMinimoGiro": null
+      }
+    },
+    "pneus": {
+      "create": {
+        "dianteiros": "215/55",
+        "traseiros": "215/55",
+        "alturaFlancoD": null,
+        "estepe": "Space saver",
+        "tipo": "Liga leve"
+      }
+    },
+    "dimensoes": {
+      "create": {
+        "comprimento": "4325",
+        "largura": "1790",
+        "distanciaEntreEixos": "2600",
+        "altura": "1650",
+        "bitolaDianteira": null,
+        "bitolaTraseira": null,
+        "portaMalas": "458",
+        "tanqueCombustivel": "44",
+        "peso": "1273",
+        "cargaUtil": null,
+        "vaoLivreSolo": "223"
+      }
+    },
+    "aerodinamica": {
+      "create": {
+        "areaFrontal": null,
+        "coeficienteArrasto": null,
+        "areaFrontalCorrigida": null
+      }
+    },
+    "desempenho": {
+      "create": {
+        "velocidadeMaxima": null,
+        "aceleracao0100": null
+      }
+    },
+    "consumo": {
+      "create": {
+        "urbano": "8,2",
+        "rodoviario": "8.9"
+      }
+    },
+    "autonomia": {
+      "create": {
+        "urbana": null,
+        "rodoviaria": null
+      }
+    }
+  }
+]

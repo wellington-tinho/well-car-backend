@@ -13,12 +13,13 @@
 		"start": "node dist/server.cjs",
 		"services:up": "docker-compose -f infra/docker-compose.yaml up -d",
 		"services:stop": "docker-compose -f infra/docker-compose.yaml stop",
-		"services:down": "docker-compose -f infra/docker-compose.yaml down"
+		"services:down": "docker-compose -f infra/docker-compose.yaml down",
+		"prisma:seed": "node --experimental-strip-types prisma/seed.ts"
 	},
 	"keywords": [],
 	"author": "Wellington",
 	"license": "ISC",
-	"packageManager": "pnpm@10.12.4",
+	"packageManager": "pnpm@10.18.3",
 	"dependencies": {
 		"@fastify/cors": "^11.1.0",
 		"@fastify/swagger": "^9.5.2",
