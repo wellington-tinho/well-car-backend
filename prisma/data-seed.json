@@ -110,16 +110,10 @@
         "aceleracao0100": "8,2"
       }
     },
-    "consumo": {
-      "create": {
-        "urbano": "7,9",
-        "rodoviario": "8,8"
-      }
-    },
     "autonomia": {
       "create": {
-        "urbana": null,
-        "rodoviaria": null
+        "urbana": "7,9",
+        "rodoviaria": "8,8"
       }
     }
   },
@@ -234,16 +228,10 @@
         "aceleracao0100": null
       }
     },
-    "consumo": {
-      "create": {
-        "urbano": "9,1",
-        "rodoviario": "10,1"
-      }
-    },
     "autonomia": {
       "create": {
-        "urbana": null,
-        "rodoviaria": null
+        "urbana": "9,1",
+        "rodoviaria": "10,1"
       }
     }
   },
@@ -358,16 +346,10 @@
         "aceleracao0100": null
       }
     },
-    "consumo": {
-      "create": {
-        "urbano": "8,2",
-        "rodoviario": "8.9"
-      }
-    },
     "autonomia": {
       "create": {
-        "urbana": null,
-        "rodoviaria": null
+        "urbana": "8,2",
+        "rodoviaria": "8.9"
       }
     }
   }
