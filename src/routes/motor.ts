@@ -1,5 +1,10 @@
 import z from "zod";
-import { type MotorType, motorSchema } from "../schemas/motor-data.scheme.ts";
+
+import {
+	type MotorType,
+	motorResponseSchema,
+	motorSchema,
+} from "../schemas/motor-data.scheme.ts";
 import { motorService } from "../services/motorService.ts";
 
 import type { FastifyTypedInstance } from "../types.ts";
@@ -16,7 +21,7 @@ export default async function motorRoutes(app: FastifyTypedInstance) {
 				response: {
 					201: z.object({
 						success: z.boolean(),
-						data: motorSchema,
+						data: motorResponseSchema,
 					}),
 					400: z.object({
 						success: z.boolean(),
@@ -36,7 +41,6 @@ export default async function motorRoutes(app: FastifyTypedInstance) {
 
 				return reply.status(201).send({
 					success: true,
-					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do MotorType não aceita null
 					data: newMotor,
 				});
 			} catch (error) {
@@ -58,7 +62,7 @@ export default async function motorRoutes(app: FastifyTypedInstance) {
 				response: {
 					200: z.object({
 						success: z.boolean(),
-						data: z.array(motorSchema),
+						data: z.array(motorResponseSchema),
 					}),
 					500: z.object({
 						success: z.boolean(),
@@ -70,10 +74,9 @@ export default async function motorRoutes(app: FastifyTypedInstance) {
 		async (_, reply) => {
 			try {
 				const motores = await motorService.getAllMotores();
-
+				console.log(motores);
 				return reply.send({
 					success: true,
-					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do MotorType não aceita null
 					data: motores,
 				});
 			} catch (error) {
@@ -98,7 +101,7 @@ export default async function motorRoutes(app: FastifyTypedInstance) {
 				response: {
 					200: z.object({
 						success: z.boolean(),
-						data: motorSchema,
+						data: motorResponseSchema,
 					}),
 					404: z.object({
 						success: z.boolean(),
@@ -125,7 +128,6 @@ export default async function motorRoutes(app: FastifyTypedInstance) {
 
 				return reply.send({
 					success: true,
-					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do MotorType não aceita null
 					data: motor,
 				});
 			} catch (error) {
@@ -151,7 +153,7 @@ export default async function motorRoutes(app: FastifyTypedInstance) {
 				response: {
 					200: z.object({
 						success: z.boolean(),
-						data: motorSchema,
+						data: motorResponseSchema,
 					}),
 					404: z.object({
 						success: z.boolean(),
@@ -173,7 +175,6 @@ export default async function motorRoutes(app: FastifyTypedInstance) {
 
 				return reply.send({
 					success: true,
-					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do MotorType não aceita null
 					data: updatedMotor,
 				});
 			} catch (error) {

@@ -1,6 +1,7 @@
 import z from "zod";
 import {
 	type DimensoesType,
+	dimensoesResponseSchema,
 	dimensoesSchema,
 } from "../schemas/dimensoes-data.scheme.ts";
 import { dimensoesService } from "../services/dimensoesService.ts";
@@ -15,7 +16,10 @@ export default async function dimensoesRoutes(app: FastifyTypedInstance) {
 				description: "Criar dimensões",
 				body: dimensoesSchema.omit({ id: true }),
 				response: {
-					201: z.object({ success: z.boolean(), data: dimensoesSchema }),
+					201: z.object({
+						success: z.boolean(),
+						data: dimensoesResponseSchema,
+					}),
 					500: z.object({
 						success: z.boolean(),
 						error: z.string(),
@@ -27,7 +31,6 @@ export default async function dimensoesRoutes(app: FastifyTypedInstance) {
 			try {
 				const data = request.body as DimensoesType;
 				const result = await dimensoesService.createDimensoes(data);
-				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do DimensoesType não aceita null
 				return reply.status(201).send({ success: true, data: result });
 			} catch (error) {
 				return reply
@@ -46,7 +49,7 @@ export default async function dimensoesRoutes(app: FastifyTypedInstance) {
 				response: {
 					200: z.object({
 						success: z.boolean(),
-						data: z.array(dimensoesSchema),
+						data: z.array(dimensoesResponseSchema),
 					}),
 					500: z.object({
 						success: z.boolean(),
@@ -58,7 +61,6 @@ export default async function dimensoesRoutes(app: FastifyTypedInstance) {
 		async (_, reply) => {
 			try {
 				const result = await dimensoesService.getAllDimensoes();
-				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do DimensoesType não aceita null
 				return reply.send({ success: true, data: result });
 			} catch (error) {
 				return reply
@@ -73,9 +75,11 @@ export default async function dimensoesRoutes(app: FastifyTypedInstance) {
 		{
 			schema: {
 				tags: ["dimensoes"],
-				params: z.object({ id: z.uuid() }),
 				response: {
-					200: z.object({ success: z.boolean(), data: dimensoesSchema }),
+					200: z.object({
+						success: z.boolean(),
+						data: dimensoesResponseSchema,
+					}),
 					404: z.object({
 						success: z.boolean(),
 						error: z.string(),
@@ -95,7 +99,6 @@ export default async function dimensoesRoutes(app: FastifyTypedInstance) {
 					return reply
 						.status(404)
 						.send({ success: false, error: "Dimensões não encontradas" });
-				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do DimensoesType não aceita null
 				return reply.send({ success: true, data: result });
 			} catch (error) {
 				return reply
@@ -113,7 +116,10 @@ export default async function dimensoesRoutes(app: FastifyTypedInstance) {
 				params: z.object({ id: z.uuid() }),
 				body: dimensoesSchema.omit({ id: true }).partial(),
 				response: {
-					200: z.object({ success: z.boolean(), data: dimensoesSchema }),
+					200: z.object({
+						success: z.boolean(),
+						data: dimensoesResponseSchema,
+					}),
 					500: z.object({
 						success: z.boolean(),
 						error: z.string(),
@@ -126,7 +132,6 @@ export default async function dimensoesRoutes(app: FastifyTypedInstance) {
 				const { id } = request.params as { id: string };
 				const data = request.body as Partial<DimensoesType>;
 				const result = await dimensoesService.updateDimensoes(id, data);
-				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do DimensoesType não aceita null
 				return reply.send({ success: true, data: result });
 			} catch (error) {
 				return reply

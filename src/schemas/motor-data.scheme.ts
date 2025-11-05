@@ -1,5 +1,9 @@
 import { z } from "zod";
+import { makeResponseSchema } from "./common.ts";
 
+// 1. Schema Base para os campos do Motor
+// Este schema usa .optional(), que é a forma correta para o Zod/Prisma na entrada de dados (create/update),
+// pois a ausência de um campo é tratada como `undefined`.
 export const motorSchema = z.object({
 	id: z.uuid().optional(),
 	instalacao: z.string().optional(),
@@ -24,4 +28,11 @@ export const motorSchema = z.object({
 	rotacaoMaxima: z.string().optional(),
 });
 
+// 2. Schema de Resposta para a API
+// Este schema é gerado a partir do `motorSchema` e transforma todos os campos
+// para aceitarem `null` na saída. Isso representa corretamente os dados vindos do Prisma.
+export const motorResponseSchema = makeResponseSchema(motorSchema);
+
+// 3. Tipos inferidos a partir dos schemas
 export type MotorType = z.infer<typeof motorSchema>;
+export type MotorResponseType = z.infer<typeof motorResponseSchema>;

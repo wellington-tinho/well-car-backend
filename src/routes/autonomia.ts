@@ -1,6 +1,7 @@
 import z from "zod";
 import {
 	type AutonomiaType,
+	autonomiaResponseSchema,
 	autonomiaSchema,
 } from "../schemas/autonomia-data.scheme.ts";
 import { autonomiaService } from "../services/autonomiaService.ts";
@@ -14,7 +15,10 @@ export default async function autonomiaRoutes(app: FastifyTypedInstance) {
 				tags: ["autonomias"],
 				body: autonomiaSchema.omit({ id: true }),
 				response: {
-					201: z.object({ success: z.boolean(), data: autonomiaSchema }),
+					201: z.object({
+						success: z.boolean(),
+						data: autonomiaResponseSchema.nullable(),
+					}),
 					500: z.object({
 						success: z.boolean(),
 						error: z.string(),
@@ -26,7 +30,6 @@ export default async function autonomiaRoutes(app: FastifyTypedInstance) {
 			try {
 				const data = request.body as AutonomiaType;
 				const result = await autonomiaService.createAutonomia(data);
-				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do AutonomiaType não aceita null
 				return reply.status(201).send({ success: true, data: result });
 			} catch (error) {
 				return reply
@@ -44,36 +47,8 @@ export default async function autonomiaRoutes(app: FastifyTypedInstance) {
 				response: {
 					200: z.object({
 						success: z.boolean(),
-						data: z.array(autonomiaSchema),
+						data: autonomiaResponseSchema.nullable(),
 					}),
-					500: z.object({
-						success: z.boolean(),
-						error: z.string(),
-					}),
-				},
-			},
-		},
-		async (_, reply) => {
-			try {
-				const result = await autonomiaService.getAllAutonomias();
-				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do AutonomiaType não aceita null
-				return reply.send({ success: true, data: result });
-			} catch (error) {
-				return reply
-					.status(500)
-					.send({ success: false, error: (error as Error).message });
-			}
-		},
-	);
-
-	app.get(
-		"/autonomias/:id",
-		{
-			schema: {
-				tags: ["autonomias"],
-				params: z.object({ id: z.uuid() }),
-				response: {
-					200: z.object({ success: z.boolean(), data: autonomiaSchema }),
 					404: z.object({
 						success: z.boolean(),
 						error: z.string(),
@@ -89,11 +64,6 @@ export default async function autonomiaRoutes(app: FastifyTypedInstance) {
 			try {
 				const { id } = request.params as { id: string };
 				const result = await autonomiaService.getAutonomiaById(id);
-				if (!result)
-					return reply
-						.status(404)
-						.send({ success: false, error: "Autonomia não encontrada" });
-				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do AutonomiaType não aceita null
 				return reply.send({ success: true, data: result });
 			} catch (error) {
 				return reply
@@ -111,7 +81,10 @@ export default async function autonomiaRoutes(app: FastifyTypedInstance) {
 				params: z.object({ id: z.uuid() }),
 				body: autonomiaSchema.omit({ id: true }).partial(),
 				response: {
-					200: z.object({ success: z.boolean(), data: autonomiaSchema }),
+					200: z.object({
+						success: z.boolean(),
+						data: autonomiaResponseSchema,
+					}),
 					500: z.object({
 						success: z.boolean(),
 						error: z.string(),
@@ -124,7 +97,6 @@ export default async function autonomiaRoutes(app: FastifyTypedInstance) {
 				const { id } = request.params as { id: string };
 				const data = request.body as Partial<AutonomiaType>;
 				const result = await autonomiaService.updateAutonomia(id, data);
-				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do AutonomiaType não aceita null
 				return reply.send({ success: true, data: result });
 			} catch (error) {
 				return reply

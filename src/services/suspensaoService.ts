@@ -1,5 +1,8 @@
 import prisma from "../lib/prisma.ts";
-import { type SuspensaoType, suspensaoSchema } from "../schemas/suspensao-data.scheme.ts";
+import {
+	type SuspensaoType,
+	suspensaoSchema,
+} from "../schemas/suspensao-data.scheme.ts";
 
 export const suspensaoService = {
 	async createSuspensao(data: SuspensaoType) {
@@ -8,15 +11,12 @@ export const suspensaoService = {
 	},
 
 	async getAllSuspensoes() {
-		return prisma.suspensao.findMany({
-			include: { carros: true },
-		});
+		return prisma.suspensao.findMany();
 	},
 
 	async getSuspensaoById(id: string) {
 		return prisma.suspensao.findUnique({
 			where: { id },
-			include: { carros: true },
 		});
 	},
 

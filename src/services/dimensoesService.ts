@@ -1,5 +1,8 @@
 import prisma from "../lib/prisma.ts";
-import { type DimensoesType, dimensoesSchema } from "../schemas/dimensoes-data.scheme.ts";
+import {
+	type DimensoesType,
+	dimensoesSchema,
+} from "../schemas/dimensoes-data.scheme.ts";
 
 export const dimensoesService = {
 	async createDimensoes(data: DimensoesType) {
@@ -8,15 +11,12 @@ export const dimensoesService = {
 	},
 
 	async getAllDimensoes() {
-		return prisma.dimensoes.findMany({
-			include: { carros: true },
-		});
+		return prisma.dimensoes.findMany();
 	},
 
 	async getDimensoesById(id: string) {
 		return prisma.dimensoes.findUnique({
 			where: { id },
-			include: { carros: true },
 		});
 	},
 

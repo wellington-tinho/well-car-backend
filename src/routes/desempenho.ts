@@ -1,6 +1,7 @@
 import z from "zod";
 import {
 	type DesempenhoType,
+	desempenhoResponseSchema,
 	desempenhoSchema,
 } from "../schemas/desempenho-data.scheme.ts";
 import { desempenhoService } from "../services/desempenhoService.ts";
@@ -14,7 +15,10 @@ export default async function desempenhoRoutes(app: FastifyTypedInstance) {
 				tags: ["desempenhos"],
 				body: desempenhoSchema.omit({ id: true }),
 				response: {
-					201: z.object({ success: z.boolean(), data: desempenhoSchema }),
+					201: z.object({
+						success: z.boolean(),
+						data: desempenhoResponseSchema,
+					}),
 					500: z.object({
 						success: z.boolean(),
 						error: z.string(),
@@ -26,7 +30,6 @@ export default async function desempenhoRoutes(app: FastifyTypedInstance) {
 			try {
 				const data = request.body as DesempenhoType;
 				const result = await desempenhoService.createDesempenho(data);
-				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do DesempenhoType não aceita null
 				return reply.status(201).send({ success: true, data: result });
 			} catch (error) {
 				return reply
@@ -44,7 +47,7 @@ export default async function desempenhoRoutes(app: FastifyTypedInstance) {
 				response: {
 					200: z.object({
 						success: z.boolean(),
-						data: z.array(desempenhoSchema),
+						data: z.array(desempenhoResponseSchema),
 					}),
 					500: z.object({
 						success: z.boolean(),
@@ -56,7 +59,6 @@ export default async function desempenhoRoutes(app: FastifyTypedInstance) {
 		async (_, reply) => {
 			try {
 				const result = await desempenhoService.getAllDesempenhos();
-				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do DesempenhoType não aceita null
 				return reply.send({ success: true, data: result });
 			} catch (error) {
 				return reply
@@ -71,9 +73,11 @@ export default async function desempenhoRoutes(app: FastifyTypedInstance) {
 		{
 			schema: {
 				tags: ["desempenhos"],
-				params: z.object({ id: z.uuid() }),
 				response: {
-					200: z.object({ success: z.boolean(), data: desempenhoSchema }),
+					200: z.object({
+						success: z.boolean(),
+						data: desempenhoResponseSchema,
+					}),
 					404: z.object({
 						success: z.boolean(),
 						error: z.string(),
@@ -93,7 +97,6 @@ export default async function desempenhoRoutes(app: FastifyTypedInstance) {
 					return reply
 						.status(404)
 						.send({ success: false, error: "Desempenho não encontrado" });
-				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do DesempenhoType não aceita null
 				return reply.send({ success: true, data: result });
 			} catch (error) {
 				return reply
@@ -111,7 +114,10 @@ export default async function desempenhoRoutes(app: FastifyTypedInstance) {
 				params: z.object({ id: z.uuid() }),
 				body: desempenhoSchema.omit({ id: true }).partial(),
 				response: {
-					200: z.object({ success: z.boolean(), data: desempenhoSchema }),
+					200: z.object({
+						success: z.boolean(),
+						data: desempenhoResponseSchema,
+					}),
 					500: z.object({
 						success: z.boolean(),
 						error: z.string(),
@@ -124,7 +130,6 @@ export default async function desempenhoRoutes(app: FastifyTypedInstance) {
 				const { id } = request.params as { id: string };
 				const data = request.body as Partial<DesempenhoType>;
 				const result = await desempenhoService.updateDesempenho(id, data);
-				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do DesempenhoType não aceita null
 				return reply.send({ success: true, data: result });
 			} catch (error) {
 				return reply

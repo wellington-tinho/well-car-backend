@@ -1,6 +1,7 @@
 import z from "zod";
 import {
 	type TransmissaoType,
+	transmissaoResponseSchema,
 	transmissaoSchema,
 } from "../schemas/transmissao-data.scheme.ts";
 import { transmissaoService } from "../services/transmissaoService.ts";
@@ -18,7 +19,7 @@ export default async function transmissaoRoutes(app: FastifyTypedInstance) {
 				response: {
 					201: z.object({
 						success: z.boolean(),
-						data: transmissaoSchema,
+						data: transmissaoResponseSchema,
 					}),
 					400: z.object({
 						success: z.boolean(),
@@ -39,7 +40,6 @@ export default async function transmissaoRoutes(app: FastifyTypedInstance) {
 
 				return reply.status(201).send({
 					success: true,
-					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do TransmissaoType não aceita null
 					data: newTransmissao,
 				});
 			} catch (error) {
@@ -61,7 +61,7 @@ export default async function transmissaoRoutes(app: FastifyTypedInstance) {
 				response: {
 					200: z.object({
 						success: z.boolean(),
-						data: z.array(transmissaoSchema),
+						data: z.array(transmissaoResponseSchema),
 					}),
 					500: z.object({
 						success: z.boolean(),
@@ -76,7 +76,6 @@ export default async function transmissaoRoutes(app: FastifyTypedInstance) {
 
 				return reply.send({
 					success: true,
-					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do TransmissaoType não aceita null
 					data: transmissoes,
 				});
 			} catch (error) {
@@ -101,7 +100,7 @@ export default async function transmissaoRoutes(app: FastifyTypedInstance) {
 				response: {
 					200: z.object({
 						success: z.boolean(),
-						data: transmissaoSchema,
+						data: transmissaoResponseSchema,
 					}),
 					404: z.object({
 						success: z.boolean(),
@@ -128,7 +127,6 @@ export default async function transmissaoRoutes(app: FastifyTypedInstance) {
 
 				return reply.send({
 					success: true,
-					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do TransmissaoType não aceita null
 					data: transmissao,
 				});
 			} catch (error) {
@@ -154,7 +152,7 @@ export default async function transmissaoRoutes(app: FastifyTypedInstance) {
 				response: {
 					200: z.object({
 						success: z.boolean(),
-						data: transmissaoSchema,
+						data: transmissaoResponseSchema,
 					}),
 					404: z.object({
 						success: z.boolean(),
@@ -179,7 +177,6 @@ export default async function transmissaoRoutes(app: FastifyTypedInstance) {
 
 				return reply.send({
 					success: true,
-					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do TransmissaoType não aceita null
 					data: updatedTransmissao,
 				});
 			} catch (error) {

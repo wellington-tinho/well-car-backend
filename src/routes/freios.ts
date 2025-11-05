@@ -1,6 +1,7 @@
 import z from "zod";
 import {
 	type FreiosType,
+	freiosResponseSchema,
 	freiosSchema,
 } from "../schemas/freios-data.scheme.ts";
 import { freiosService } from "../services/freiosService.ts";
@@ -18,7 +19,7 @@ export default async function freiosRoutes(app: FastifyTypedInstance) {
 				response: {
 					201: z.object({
 						success: z.boolean(),
-						data: freiosSchema,
+						data: freiosResponseSchema,
 					}),
 					400: z.object({
 						success: z.boolean(),
@@ -38,7 +39,6 @@ export default async function freiosRoutes(app: FastifyTypedInstance) {
 
 				return reply.status(201).send({
 					success: true,
-					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do FreiosType não aceita null
 					data: newFreios,
 				});
 			} catch (error) {
@@ -60,7 +60,7 @@ export default async function freiosRoutes(app: FastifyTypedInstance) {
 				response: {
 					200: z.object({
 						success: z.boolean(),
-						data: z.array(freiosSchema),
+						data: z.array(freiosResponseSchema),
 					}),
 					500: z.object({
 						success: z.boolean(),
@@ -75,7 +75,6 @@ export default async function freiosRoutes(app: FastifyTypedInstance) {
 
 				return reply.send({
 					success: true,
-					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do FreiosType não aceita null
 					data: freios,
 				});
 			} catch (error) {
@@ -100,7 +99,7 @@ export default async function freiosRoutes(app: FastifyTypedInstance) {
 				response: {
 					200: z.object({
 						success: z.boolean(),
-						data: freiosSchema,
+						data: freiosResponseSchema,
 					}),
 					404: z.object({
 						success: z.boolean(),
@@ -127,7 +126,6 @@ export default async function freiosRoutes(app: FastifyTypedInstance) {
 
 				return reply.send({
 					success: true,
-					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do FreiosType não aceita null
 					data: freios,
 				});
 			} catch (error) {
@@ -153,7 +151,7 @@ export default async function freiosRoutes(app: FastifyTypedInstance) {
 				response: {
 					200: z.object({
 						success: z.boolean(),
-						data: freiosSchema,
+						data: freiosResponseSchema,
 					}),
 					404: z.object({
 						success: z.boolean(),
@@ -175,7 +173,6 @@ export default async function freiosRoutes(app: FastifyTypedInstance) {
 
 				return reply.send({
 					success: true,
-					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do FreiosType não aceita null
 					data: updatedFreios,
 				});
 			} catch (error) {

@@ -19,10 +19,10 @@ export const carService = {
 	// READ (todos)
 	async getAllCars() {
 		return prisma.carro.findMany({
-			include: {
-				motor: true,
-				transmissao: true,
-			},
+			// include: {
+			// 	motor: true,
+			// 	transmissao: true,
+			// },
 		});
 	},
 

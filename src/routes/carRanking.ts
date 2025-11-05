@@ -1,6 +1,7 @@
 import z from "zod";
 import {
 	type CarRankingType,
+	carRankingResponseSchema,
 	carRankingSchema,
 } from "../schemas/car-ranking-data.scheme.ts";
 import { carRankingService } from "../services/carRankingService.ts";
@@ -14,7 +15,10 @@ export default async function carRankingRoutes(app: FastifyTypedInstance) {
 				tags: ["car-rankings"],
 				body: carRankingSchema.omit({ id: true }),
 				response: {
-					201: z.object({ success: z.boolean(), data: carRankingSchema }),
+					201: z.object({
+						success: z.boolean(),
+						data: carRankingResponseSchema,
+					}),
 					500: z.object({
 						success: z.boolean(),
 						error: z.string(),
@@ -26,7 +30,6 @@ export default async function carRankingRoutes(app: FastifyTypedInstance) {
 			try {
 				const data = request.body as CarRankingType;
 				const result = await carRankingService.createCarRanking(data);
-				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do CarRankingType não aceita null
 				return reply.status(201).send({ success: true, data: result });
 			} catch (error) {
 				return reply
@@ -44,7 +47,7 @@ export default async function carRankingRoutes(app: FastifyTypedInstance) {
 				response: {
 					200: z.object({
 						success: z.boolean(),
-						data: z.array(carRankingSchema),
+						data: z.array(carRankingResponseSchema.nullable()),
 					}),
 					500: z.object({
 						success: z.boolean(),
@@ -56,7 +59,6 @@ export default async function carRankingRoutes(app: FastifyTypedInstance) {
 		async (_, reply) => {
 			try {
 				const result = await carRankingService.getAllCarRankings();
-				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do CarRankingType não aceita null
 				return reply.send({ success: true, data: result });
 			} catch (error) {
 				return reply
@@ -73,7 +75,10 @@ export default async function carRankingRoutes(app: FastifyTypedInstance) {
 				tags: ["car-rankings"],
 				params: z.object({ id: z.uuid() }),
 				response: {
-					200: z.object({ success: z.boolean(), data: carRankingSchema }),
+					200: z.object({
+						success: z.boolean(),
+						data: carRankingResponseSchema,
+					}),
 					404: z.object({
 						success: z.boolean(),
 						error: z.string(),
@@ -93,7 +98,6 @@ export default async function carRankingRoutes(app: FastifyTypedInstance) {
 					return reply
 						.status(404)
 						.send({ success: false, error: "Ranking do carro não encontrado" });
-				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do CarRankingType não aceita null
 				return reply.send({ success: true, data: result });
 			} catch (error) {
 				return reply
@@ -111,7 +115,10 @@ export default async function carRankingRoutes(app: FastifyTypedInstance) {
 				params: z.object({ id: z.uuid() }),
 				body: carRankingSchema.omit({ id: true }).partial(),
 				response: {
-					200: z.object({ success: z.boolean(), data: carRankingSchema }),
+					200: z.object({
+						success: z.boolean(),
+						data: carRankingResponseSchema,
+					}),
 					500: z.object({
 						success: z.boolean(),
 						error: z.string(),
@@ -122,10 +129,8 @@ export default async function carRankingRoutes(app: FastifyTypedInstance) {
 		async (request, reply) => {
 			try {
 				const { id } = request.params as { id: string };
-				const data = request.body as Partial<CarRankingType>;
-				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do CarRankingType não aceita null
+				const data = request.body as CarRankingType;
 				const result = await carRankingService.updateCarRanking(id, data);
-				// @ts-expect-error
 				return reply.send({ success: true, data: result });
 			} catch (error) {
 				return reply

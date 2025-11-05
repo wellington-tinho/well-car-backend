@@ -1,5 +1,8 @@
 import prisma from "../lib/prisma.ts";
-import { type RankingSystemType, rankingSystemSchema } from "../schemas/ranking-system-data.scheme.ts";
+import {
+	type RankingSystemType,
+	rankingSystemSchema,
+} from "../schemas/ranking-system-data.scheme.ts";
 
 export const rankingSystemService = {
 	async createRankingSystem(data: RankingSystemType) {

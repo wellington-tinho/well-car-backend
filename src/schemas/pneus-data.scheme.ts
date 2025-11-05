@@ -1,22 +1,19 @@
 import { z } from "zod";
+import { makeResponseSchema } from "./common.ts";
 
+// 1. Schema Base para os campos de Pneus
 export const pneusSchema = z.object({
-  id: z.uuid().optional(),
-  dianteiros: z.string().optional(),
-  traseiros: z.string().optional(),
-  alturaFlancoD: z.string().optional(),
-  estepe: z.string().optional(),
-  tipo: z.string().optional(),
+	id: z.uuid().optional(),
+	dianteiros: z.string().optional(),
+	traseiros: z.string().optional(),
+	alturaFlancoD: z.string().optional(),
+	estepe: z.string().optional(),
+	tipo: z.string().optional(),
 });
 
-export const pneusSchemaWithNull = z.object({
-  id: z.uuid().optional().nullable(),
-  dianteiros: z.string().optional().nullable(),
-  traseiros: z.string().optional().nullable(),
-  alturaFlancoD: z.string().optional().nullable(),
-  estepe: z.string().optional().nullable(),
-  tipo: z.string().optional().nullable(),
-});
+// 2. Schema de Resposta para a API (com campos nulos)
+export const pneusResponseSchema = makeResponseSchema(pneusSchema);
 
+// 3. Tipos inferidos
 export type PneusType = z.infer<typeof pneusSchema>;
-// export type PneusType = z.infer<typeof pneusSchemawithNull>;
+export type PneusResponseType = z.infer<typeof pneusResponseSchema>;

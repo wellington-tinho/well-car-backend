@@ -1,5 +1,8 @@
 import prisma from "../lib/prisma.ts";
-import { type ConsumoType, consumoSchema } from "../schemas/consumo-data.scheme.ts";
+import {
+	type ConsumoType,
+	consumoSchema,
+} from "../schemas/consumo-data.scheme.ts";
 
 export const consumoService = {
 	async createConsumo(data: ConsumoType) {
@@ -8,15 +11,12 @@ export const consumoService = {
 	},
 
 	async getAllConsumos() {
-		return prisma.consumo.findMany({
-			include: { carros: true },
-		});
+		return prisma.consumo.findMany();
 	},
 
 	async getConsumoById(id: string) {
 		return prisma.consumo.findUnique({
 			where: { id },
-			include: { carros: true },
 		});
 	},
 

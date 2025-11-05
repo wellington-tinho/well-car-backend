@@ -1,5 +1,8 @@
 import prisma from "../lib/prisma.ts";
-import { type CarRankingType, carRankingSchema } from "../schemas/car-ranking-data.scheme.ts";
+import {
+	type CarRankingType,
+	carRankingSchema,
+} from "../schemas/car-ranking-data.scheme.ts";
 
 export const carRankingService = {
 	async createCarRanking(data: CarRankingType) {

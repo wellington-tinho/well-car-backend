@@ -1,5 +1,8 @@
 import prisma from "../lib/prisma.ts";
-import { type DirecaoType, direcaoSchema } from "../schemas/direcao-data.scheme.ts";
+import {
+	type DirecaoType,
+	direcaoSchema,
+} from "../schemas/direcao-data.scheme.ts";
 
 export const direcaoService = {
 	async createDirecao(data: DirecaoType) {
@@ -8,15 +11,12 @@ export const direcaoService = {
 	},
 
 	async getAllDirecoes() {
-		return prisma.direcao.findMany({
-			include: { carros: true },
-		});
+		return prisma.direcao.findMany();
 	},
 
 	async getDirecaoById(id: string) {
 		return prisma.direcao.findUnique({
 			where: { id },
-			include: { carros: true },
 		});
 	},
 

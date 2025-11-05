@@ -10,20 +10,13 @@ export const motorService = {
 
 	// READ (todos)
 	async getAllMotores() {
-		return prisma.motor.findMany({
-			include: {
-				carros: true,
-			},
-		});
+		return prisma.motor.findMany();
 	},
 
 	// READ (por ID)
 	async getMotorById(id: string) {
 		return prisma.motor.findUnique({
 			where: { id },
-			include: {
-				carros: true,
-			},
 		});
 	},
 

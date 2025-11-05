@@ -100,7 +100,6 @@ export default async function aerodinamicaRoutes(app: FastifyTypedInstance) {
 					return reply
 						.status(404)
 						.send({ success: false, error: "Aerodinâmica não encontrada" });
-				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do AerodinamicaType não aceita null
 				return reply.send({ success: true, data: result });
 			} catch (error) {
 				return reply

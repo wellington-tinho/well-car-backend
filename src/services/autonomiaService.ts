@@ -1,5 +1,8 @@
 import prisma from "../lib/prisma.ts";
-import { type AutonomiaType, autonomiaSchema } from "../schemas/autonomia-data.scheme.ts";
+import {
+	type AutonomiaType,
+	autonomiaSchema,
+} from "../schemas/autonomia-data.scheme.ts";
 
 export const autonomiaService = {
 	async createAutonomia(data: AutonomiaType) {
@@ -8,15 +11,12 @@ export const autonomiaService = {
 	},
 
 	async getAllAutonomias() {
-		return prisma.autonomia.findMany({
-			include: { carros: true },
-		});
+		return prisma.autonomia.findMany();
 	},
 
 	async getAutonomiaById(id: string) {
 		return prisma.autonomia.findUnique({
 			where: { id },
-			include: { carros: true },
 		});
 	},
 

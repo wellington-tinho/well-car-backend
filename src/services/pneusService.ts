@@ -8,15 +8,12 @@ export const pneusService = {
 	},
 
 	async getAllPneus() {
-		return prisma.pneus.findMany({
-			include: { carros: true },
-		});
+		return prisma.pneus.findMany();
 	},
 
 	async getPneusById(id: string) {
 		return prisma.pneus.findUnique({
 			where: { id },
-			include: { carros: true },
 		});
 	},
 

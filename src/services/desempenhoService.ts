@@ -1,5 +1,8 @@
 import prisma from "../lib/prisma.ts";
-import { type DesempenhoType, desempenhoSchema } from "../schemas/desempenho-data.scheme.ts";
+import {
+	type DesempenhoType,
+	desempenhoSchema,
+} from "../schemas/desempenho-data.scheme.ts";
 
 export const desempenhoService = {
 	async createDesempenho(data: DesempenhoType) {
@@ -8,15 +11,12 @@ export const desempenhoService = {
 	},
 
 	async getAllDesempenhos() {
-		return prisma.desempenho.findMany({
-			include: { carros: true },
-		});
+		return prisma.desempenho.findMany();
 	},
 
 	async getDesempenhoById(id: string) {
 		return prisma.desempenho.findUnique({
 			where: { id },
-			include: { carros: true },
 		});
 	},
 

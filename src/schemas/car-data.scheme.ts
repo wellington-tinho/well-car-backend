@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { makeResponseSchema } from "./common.ts";
 
 export const carSchema = z.object({
 	id: z.uuid().optional(),
@@ -44,11 +45,15 @@ export const carSchema = z.object({
 
 export type CarType = z.infer<typeof carSchema>;
 
+export const carResponseSchema = makeResponseSchema(carSchema);
+
+export type CarResponseType = z.infer<typeof carResponseSchema>;
+
 // Schema para atualização (todos opcionais, exceto id obrigatório)
 export const carSchemaUpdate = carSchema
 	.partial()
 	.extend({
-		id: z.uuid(), // força id a ser obrigatório
+		id: z.string().uuid(), // força id a ser obrigatório
 	})
 	.omit({ createdAt: true, updatedAt: true });
 

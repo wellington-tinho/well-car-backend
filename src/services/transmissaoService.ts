@@ -1,5 +1,8 @@
 import prisma from "../lib/prisma.ts";
-import { type TransmissaoType, transmissaoSchema } from "../schemas/transmissao-data.scheme.ts";
+import {
+	type TransmissaoType,
+	transmissaoSchema,
+} from "../schemas/transmissao-data.scheme.ts";
 
 export const transmissaoService = {
 	// CREATE
@@ -10,20 +13,13 @@ export const transmissaoService = {
 
 	// READ (todos)
 	async getAllTransmissoes() {
-		return prisma.transmissao.findMany({
-			include: {
-				carros: true,
-			},
-		});
+		return prisma.transmissao.findMany();
 	},
 
 	// READ (por ID)
 	async getTransmissaoById(id: string) {
 		return prisma.transmissao.findUnique({
 			where: { id },
-			include: {
-				carros: true,
-			},
 		});
 	},
 

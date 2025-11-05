@@ -1,6 +1,7 @@
 import z from "zod";
 import {
 	type DirecaoType,
+	direcaoResponseSchema,
 	direcaoSchema,
 } from "../schemas/direcao-data.scheme.ts";
 import { direcaoService } from "../services/direcaoService.ts";
@@ -18,7 +19,7 @@ export default async function direcaoRoutes(app: FastifyTypedInstance) {
 				response: {
 					201: z.object({
 						success: z.boolean(),
-						data: direcaoSchema,
+						data: direcaoResponseSchema,
 					}),
 					400: z.object({
 						success: z.boolean(),
@@ -38,7 +39,6 @@ export default async function direcaoRoutes(app: FastifyTypedInstance) {
 
 				return reply.status(201).send({
 					success: true,
-					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do DirecaoType não aceita null
 					data: newDirecao,
 				});
 			} catch (error) {
@@ -60,7 +60,7 @@ export default async function direcaoRoutes(app: FastifyTypedInstance) {
 				response: {
 					200: z.object({
 						success: z.boolean(),
-						data: z.array(direcaoSchema),
+						data: z.array(direcaoResponseSchema),
 					}),
 					500: z.object({
 						success: z.boolean(),
@@ -75,7 +75,6 @@ export default async function direcaoRoutes(app: FastifyTypedInstance) {
 
 				return reply.send({
 					success: true,
-					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do DirecaoType não aceita null
 					data: direcoes,
 				});
 			} catch (error) {
@@ -100,7 +99,7 @@ export default async function direcaoRoutes(app: FastifyTypedInstance) {
 				response: {
 					200: z.object({
 						success: z.boolean(),
-						data: direcaoSchema,
+						data: direcaoResponseSchema,
 					}),
 					404: z.object({
 						success: z.boolean(),
@@ -127,7 +126,6 @@ export default async function direcaoRoutes(app: FastifyTypedInstance) {
 
 				return reply.send({
 					success: true,
-					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do DirecaoType não aceita null
 					data: direcao,
 				});
 			} catch (error) {
@@ -153,7 +151,7 @@ export default async function direcaoRoutes(app: FastifyTypedInstance) {
 				response: {
 					200: z.object({
 						success: z.boolean(),
-						data: direcaoSchema,
+						data: direcaoResponseSchema,
 					}),
 					404: z.object({
 						success: z.boolean(),
@@ -178,7 +176,6 @@ export default async function direcaoRoutes(app: FastifyTypedInstance) {
 
 				return reply.send({
 					success: true,
-					// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do DirecaoType não aceita null
 					data: updatedDirecao,
 				});
 			} catch (error) {

@@ -1,6 +1,7 @@
 import z from "zod";
 import {
 	type ConsumoType,
+	consumoResponseSchema,
 	consumoSchema,
 } from "../schemas/consumo-data.scheme.ts";
 import { consumoService } from "../services/consumoService.ts";
@@ -14,7 +15,7 @@ export default async function consumoRoutes(app: FastifyTypedInstance) {
 				tags: ["consumos"],
 				body: consumoSchema.omit({ id: true }),
 				response: {
-					201: z.object({ success: z.boolean(), data: consumoSchema }),
+					201: z.object({ success: z.boolean(), data: consumoResponseSchema }),
 					500: z.object({
 						success: z.boolean(),
 						error: z.string(),
@@ -26,7 +27,6 @@ export default async function consumoRoutes(app: FastifyTypedInstance) {
 			try {
 				const data = request.body as ConsumoType;
 				const result = await consumoService.createConsumo(data);
-				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do ConsumoType não aceita null
 				return reply.status(201).send({ success: true, data: result });
 			} catch (error) {
 				return reply
@@ -42,7 +42,10 @@ export default async function consumoRoutes(app: FastifyTypedInstance) {
 			schema: {
 				tags: ["consumos"],
 				response: {
-					200: z.object({ success: z.boolean(), data: z.array(consumoSchema) }),
+					200: z.object({
+						success: z.boolean(),
+						data: z.array(consumoResponseSchema),
+					}),
 					500: z.object({
 						success: z.boolean(),
 						error: z.string(),
@@ -53,7 +56,6 @@ export default async function consumoRoutes(app: FastifyTypedInstance) {
 		async (_, reply) => {
 			try {
 				const result = await consumoService.getAllConsumos();
-				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do ConsumoType não aceita null
 				return reply.send({ success: true, data: result });
 			} catch (error) {
 				return reply
@@ -70,7 +72,7 @@ export default async function consumoRoutes(app: FastifyTypedInstance) {
 				tags: ["consumos"],
 				params: z.object({ id: z.uuid() }),
 				response: {
-					200: z.object({ success: z.boolean(), data: consumoSchema }),
+					200: z.object({ success: z.boolean(), data: consumoResponseSchema }),
 					404: z.object({
 						success: z.boolean(),
 						error: z.string(),
@@ -90,7 +92,6 @@ export default async function consumoRoutes(app: FastifyTypedInstance) {
 					return reply
 						.status(404)
 						.send({ success: false, error: "Consumo não encontrado" });
-				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do ConsumoType não aceita null
 				return reply.send({ success: true, data: result });
 			} catch (error) {
 				return reply
@@ -108,7 +109,7 @@ export default async function consumoRoutes(app: FastifyTypedInstance) {
 				params: z.object({ id: z.uuid() }),
 				body: consumoSchema.omit({ id: true }).partial(),
 				response: {
-					200: z.object({ success: z.boolean(), data: consumoSchema }),
+					200: z.object({ success: z.boolean(), data: consumoResponseSchema }),
 					500: z.object({
 						success: z.boolean(),
 						error: z.string(),
@@ -121,7 +122,6 @@ export default async function consumoRoutes(app: FastifyTypedInstance) {
 				const { id } = request.params as { id: string };
 				const data = request.body as Partial<ConsumoType>;
 				const result = await consumoService.updateConsumo(id, data);
-				// @ts-expect-error:  Prisma pode retornar null em campos opcionais, mas o type do ConsumoType não aceita null
 				return reply.send({ success: true, data: result });
 			} catch (error) {
 				return reply

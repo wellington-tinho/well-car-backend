@@ -1,6 +1,10 @@
 import z from "zod";
 
-import { type PneusType, pneusSchema } from "../schemas/pneus-data.scheme.ts";
+import {
+	type PneusType,
+	pneusResponseSchema,
+	pneusSchema,
+} from "../schemas/pneus-data.scheme.ts";
 import { pneusService } from "../services/pneusService.ts";
 import type { FastifyTypedInstance } from "../types.ts";
 
@@ -16,7 +20,7 @@ export default async function pneusRoutes(app: FastifyTypedInstance) {
 				response: {
 					201: z.object({
 						success: z.boolean(),
-						data: pneusSchema,
+						data: pneusResponseSchema,
 					}),
 					400: z.object({
 						success: z.boolean(),
@@ -37,7 +41,7 @@ export default async function pneusRoutes(app: FastifyTypedInstance) {
 
 				return reply.status(201).send({
 					success: true,
-					data: newPneus as PneusType,
+					data: newPneus,
 				});
 			} catch (error) {
 				return reply.status(500).send({
@@ -58,7 +62,7 @@ export default async function pneusRoutes(app: FastifyTypedInstance) {
 				response: {
 					200: z.object({
 						success: z.boolean(),
-						data: z.array(pneusSchema),
+						data: z.array(pneusResponseSchema),
 					}),
 					500: z.object({
 						success: z.boolean(),
@@ -73,7 +77,7 @@ export default async function pneusRoutes(app: FastifyTypedInstance) {
 
 				return reply.send({
 					success: true,
-					data: pneus as PneusType[],
+					data: pneus,
 				});
 			} catch (error) {
 				return reply.status(500).send({
@@ -97,7 +101,7 @@ export default async function pneusRoutes(app: FastifyTypedInstance) {
 				response: {
 					200: z.object({
 						success: z.boolean(),
-						data: pneusSchema,
+						data: pneusResponseSchema,
 					}),
 					404: z.object({
 						success: z.boolean(),
@@ -124,7 +128,7 @@ export default async function pneusRoutes(app: FastifyTypedInstance) {
 
 				return reply.send({
 					success: true,
-					data: pneus as PneusType,
+					data: pneus,
 				});
 			} catch (error) {
 				return reply.status(500).send({
@@ -149,7 +153,7 @@ export default async function pneusRoutes(app: FastifyTypedInstance) {
 				response: {
 					200: z.object({
 						success: z.boolean(),
-						data: pneusSchema,
+						data: pneusResponseSchema,
 					}),
 					404: z.object({
 						success: z.boolean(),
@@ -171,7 +175,7 @@ export default async function pneusRoutes(app: FastifyTypedInstance) {
 
 				return reply.send({
 					success: true,
-					data: updatedPneus as PneusType,
+					data: updatedPneus,
 				});
 			} catch (error) {
 				return reply.status(500).send({

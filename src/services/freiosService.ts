@@ -1,5 +1,8 @@
 import prisma from "../lib/prisma.ts";
-import { type FreiosType, freiosSchema } from "../schemas/freios-data.scheme.ts";
+import {
+	type FreiosType,
+	freiosSchema,
+} from "../schemas/freios-data.scheme.ts";
 
 export const freiosService = {
 	async createFreios(data: FreiosType) {
@@ -8,15 +11,12 @@ export const freiosService = {
 	},
 
 	async getAllFreios() {
-		return prisma.freios.findMany({
-			include: { carros: true },
-		});
+		return prisma.freios.findMany();
 	},
 
 	async getFreiosById(id: string) {
 		return prisma.freios.findUnique({
 			where: { id },
-			include: { carros: true },
 		});
 	},
 
