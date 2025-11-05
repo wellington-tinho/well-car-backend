@@ -1,41 +1,43 @@
 {
-  "name": "well-car-backend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "src/server.ts",
-  "type": "module",
-  "engines": {
-    "node": "24"
-  },
-  "scripts": {
-    "dev": "node --env-file .env --experimental-strip-types src/server.ts",
-    "build": "tsup src/server.ts --format cjs --sourcemap --clean",
-    "start": "node dist/server.cjs",
-    "services:up": "docker-compose -f infra/docker-compose.yaml up -d",
-    "services:stop": "docker-compose -f infra/docker-compose.yaml stop",
-    "services:down": "docker-compose -f infra/docker-compose.yaml down",
-    "prisma:seed": "node --experimental-strip-types prisma/seed.ts"
-  },
-  "keywords": [],
-  "author": "Wellington",
-  "license": "ISC",
-  "packageManager": "pnpm@10.18.3",
-  "dependencies": {
-    "@fastify/cors": "^11.1.0",
-    "@fastify/swagger": "^9.5.2",
-    "@fastify/swagger-ui": "^5.2.3",
-    "@prisma/client": "6.17.1",
-    "fastify": "^5.6.1",
-    "fastify-type-provider-zod": "^6.0.0",
-    "postgres": "^3.4.7",
-    "zod": "^4.1.12"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "2.2.5",
-    "@types/node": "^24.7.1",
-    "prisma": "^6.17.1",
-    "tsconfig-paths": "^4.2.0",
-    "tsup": "^8.5.0",
-    "typescript": "^5.9.3"
-  }
+	"name": "well-car-backend",
+	"version": "1.0.0",
+	"description": "",
+	"main": "src/server.ts",
+	"type": "module",
+	"engines": {
+		"node": "24"
+	},
+	"scripts": {
+		"dev": "node --env-file .env --experimental-strip-types src/server.ts",
+		"build": "tsup src/server.ts --format cjs --sourcemap --clean",
+		"start": "node dist/server.cjs",
+		"services:up": "docker-compose -f infra/docker-compose.yaml up -d",
+		"services:stop": "docker-compose -f infra/docker-compose.yaml stop",
+		"services:down": "docker-compose -f infra/docker-compose.yaml down",
+		"prisma:seed": "node --experimental-strip-types prisma/seed.ts",
+		"lint:check": "biome check src",
+		"lint:fix": "biome check --write src"
+	},
+	"keywords": [],
+	"author": "Wellington",
+	"license": "ISC",
+	"packageManager": "pnpm@10.18.3",
+	"dependencies": {
+		"@fastify/cors": "^11.1.0",
+		"@fastify/swagger": "^9.5.2",
+		"@fastify/swagger-ui": "^5.2.3",
+		"@prisma/client": "6.17.1",
+		"fastify": "^5.6.1",
+		"fastify-type-provider-zod": "^6.0.0",
+		"postgres": "^3.4.7",
+		"zod": "^4.1.12"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.2.5",
+		"@types/node": "^24.7.1",
+		"prisma": "^6.17.1",
+		"tsconfig-paths": "^4.2.0",
+		"tsup": "^8.5.0",
+		"typescript": "^5.9.3"
+	}
 }
