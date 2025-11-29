@@ -3,6 +3,7 @@
 
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
 generator client {
   provider = "prisma-client-js"
   // output   = "../src/generated/prisma"
@@ -35,6 +36,7 @@ model Carro {
   geracao      String?
   plataforma   String?
   notaLeitor   Float?
+  imagens      String?
 
   // FKs para entidades técnicas (cada carro seleciona 1 item de cada categoria)
   motorId String?
@@ -222,7 +224,7 @@ model RankingSystem {
 
 model CarRanking {
   id              String        @id @default(uuid())
-  ratingSystem    Float? // Pontos alcançados (0..10 etc)
+  ratingSystem    Float? // Pontos alcançados
   comentario      String? // opcional: comentário/observação nessa avaliação
   car             Carro         @relation(fields: [carId], references: [id])
   carId           String

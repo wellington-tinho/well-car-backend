@@ -23,6 +23,11 @@
 			"quoteStyle": "double"
 		}
 	},
+	"json": {
+		"formatter": {
+			"trailingCommas": "none"
+		}
+	},
 	"assist": {
 		"enabled": true,
 		"actions": {
