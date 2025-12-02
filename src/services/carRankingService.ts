@@ -16,6 +16,10 @@ export const carRankingService = {
 				car: true,
 				rankingSystem: true,
 			},
+			orderBy: {
+				ratingSystem: "desc",
+			},
+			take: 10,
 		});
 	},
 

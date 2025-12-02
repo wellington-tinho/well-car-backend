@@ -20,6 +20,7 @@ export const carSchema = z.object({
 	geracao: z.string().optional(),
 	plataforma: z.string().optional(),
 	notaLeitor: z.number().optional(),
+	imagens: z.string().array().optional(),
 
 	// IDs de relacionamento
 	motorId: z.uuid().optional(),
@@ -53,7 +54,7 @@ export type CarResponseType = z.infer<typeof carResponseSchema>;
 export const carSchemaUpdate = carSchema
 	.partial()
 	.extend({
-		id: z.string().uuid(), // força id a ser obrigatório
+		id: z.uuid(), // força id a ser obrigatório
 	})
 	.omit({ createdAt: true, updatedAt: true });
 
