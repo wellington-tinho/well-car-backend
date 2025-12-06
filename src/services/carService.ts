@@ -93,11 +93,19 @@ export const carService = {
 
 	// READ (todos)
 	async getAllCars() {
+		return prisma.carro.findMany();
+	},
+
+	async getAllCarsShort() {
+		// Return only id, marca, modelo, ano, preco, imagem
 		return prisma.carro.findMany({
-			// include: {
-			// 	motor: true,
-			// 	transmissao: true,
-			// },
+			select: {
+				id: true,
+				nome: true,
+				ano: true,
+				preco: true,
+				imagens: true,
+			},
 		});
 	},
 

@@ -94,6 +94,50 @@ export default async function carRoutes(app: FastifyTypedInstance) {
 		},
 	);
 
+	// READ - Buscar todos os carros
+	app.get(
+		"/cars-short",
+		{
+			schema: {
+				tags: ["cars"],
+				description: "Buscar todos os carros (formato curto)",
+				response: {
+					200: z.object({
+						success: z.boolean(),
+						data: z.array(
+							carResponseSchema.pick({
+								id: true,
+								nome: true,
+								ano: true,
+								preco: true,
+								imagens: true,
+							}),
+						),
+					}),
+					500: z.object({
+						success: z.boolean(),
+						error: z.string(),
+					}),
+				},
+			},
+		},
+		async (_, reply) => {
+			try {
+				const cars = await carService.getAllCarsShort();
+
+				return reply.send({
+					success: true,
+					data: cars,
+				});
+			} catch (error) {
+				return reply.status(500).send({
+					success: false,
+					error: (error as Error).message,
+				});
+			}
+		},
+	);
+
 	// READ - Buscar carro por ID
 	app.get(
 		"/cars/:id",
